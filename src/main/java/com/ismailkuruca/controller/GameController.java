@@ -16,7 +16,7 @@ import javax.validation.Valid;
  * Created by ismailkuruca on 17/04/2017.
  */
 
-@Controller(value = "/game")
+@Controller
 public class GameController {
 
     private final GameService gameService;

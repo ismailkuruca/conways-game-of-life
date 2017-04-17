@@ -17,11 +17,11 @@ public class GameSimulator {
 
     private int[] markNextGen(int[] content, int width, int height) {
         int[] newContent = new int[width * height];
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                int cell = content[j * height + i];
-                int aliveNeighborsCount = countAliveNeighbors(content, width, height, i, j);
-                newContent[j * height + i] = isAlive(cell, aliveNeighborsCount) ? 1 : 0;
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                int cell = content[i * height + j];
+                int aliveNeighborsCount = countAliveNeighbors(content, height, width, i, j);
+                newContent[i * height + j] = isAlive(cell, aliveNeighborsCount) ? 1 : 0;
             }
         }
         return newContent;
@@ -35,7 +35,7 @@ public class GameSimulator {
         }
     }
 
-    private static int countAliveNeighbors(int[] content, int width, int height, int i, int j) {
+    private static int countAliveNeighbors(int[] content, int height, int width, int i, int j) {
         int startPosX = (i - 1 < 0) ? i : i - 1;
         int startPosY = (j - 1 < 0) ? j : j - 1;
         int endPosX = (i + 1 >= width) ? i : i + 1;

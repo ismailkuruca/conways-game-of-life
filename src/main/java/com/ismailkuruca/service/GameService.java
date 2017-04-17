@@ -36,6 +36,8 @@ public class GameService {
     }
 
     public Board calculateSpecificGenerations(Board board, @Valid @Min(value = 1) Integer generation) {
+        boardValidator.checkBoardValidity(board);
+
         for (int i = 0; i < generation; i++) {
             board = calculateNextGeneration(board);
         }
@@ -43,6 +45,8 @@ public class GameService {
     }
 
     public List<Board> calculateAllGenerations(Board board) {
+        boardValidator.checkBoardValidity(board);
+
         ArrayList<Board> boardCollection = new ArrayList<>();
 
         while (!isStalled(boardCollection)) {
